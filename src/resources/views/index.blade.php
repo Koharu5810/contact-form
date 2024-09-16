@@ -24,7 +24,8 @@
             <div class="contact-form__heading">
                 <h2>お問い合わせ</h2>
             </div>
-            <form class="form">
+            <form class="form" action="/contacts/confirm" method="POST">
+                @csrf
                 <div class="form__group">
                     <div class="form__group-title">
                         <span class="form__label--item">お名前</span>
@@ -32,10 +33,12 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="text" name="name" placeholder="テスト太郎" />
+                            <input type="text" name="name" placeholder="テスト太郎" value="{{ old('name') }}" />
                         </div>
                         <div class="form__error">
-                            <!--バリデーション機能を実装したら記述します。-->
+                            @error('name')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -46,10 +49,12 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="email" name="email" placeholder="test@example.com" />
+                            <input type="email" name="email" placeholder="test@example.com" value="{{ old('email') }}" />
                         </div>
                         <div class="form__error">
-                            <!--バリデーション機能を実装したら記述します。-->
+                            @error('email')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -60,10 +65,12 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="tel" name="tel" placeholder="09012345678" />
+                            <input type="tel" name="tel" placeholder="09012345678" value="{{ old('tel') }}" />
                         </div>
                         <div class="form__error">
-                            <!--バリデーション機能を実装したら記述します。-->
+                            @error('tel')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
                 </div>
